@@ -58,6 +58,9 @@ class BadPlayer(Player):
         alpha = -math.inf
         beta = math.inf
         
+        total_nodes_expanded = 0
+        total_depth = 0
+
         self.turn_nodes_expanded = 0
         for depth in range(2, 1000000):
             try:

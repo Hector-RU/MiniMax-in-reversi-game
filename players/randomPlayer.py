@@ -7,6 +7,9 @@ class RandomPlayer(Player):
     
     def __init__(self, name="random"):
         super().__init__(name)
+
+    def reset(self):
+        pass
              
     def play(self, board):
         

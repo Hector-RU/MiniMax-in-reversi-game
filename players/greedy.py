@@ -4,6 +4,7 @@ from typing import List, Tuple, Optional
 import time
 import tracemalloc
 
+
 from players.player import Player
 from game.reversiBoard import ReversiBoard, opponent  # <-- Importamos ReversiBoard Y la función opponent
 from game.tokens import Token

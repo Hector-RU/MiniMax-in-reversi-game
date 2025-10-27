@@ -272,13 +272,38 @@ class ReversiBoard(Board):
         # Calcula valores h_* solo para las activas
         h_vals = {name: self.HEURISTICS[name](color) for name in enabled}
 
-        # Peso: custom > fase
-        if custom_weights is not None and any(k in enabled for k in custom_weights):
-            W = {k: v for k, v in custom_weights.items() if k in enabled}
-            W = self._normalize(W)
+        if custom_weights is not None:
+            
+            #APERTURA, MEDIO, FINAL
+            if 'apertura' in custom_weights and 'medio' in custom_weights and 'final' in custom_weights:
+                e = self._empty_count()
+                
+                if e >= 40: # Apertura
+                    W = custom_weights['apertura']
+                elif e >= 15: # Medio
+                    W = custom_weights['medio']
+                else:  # Final
+                    W = custom_weights['final']
+                
+
+
+                W = {k: v for k, v in W.items() if k in enabled}
+                W = self._normalize(W)
+
+
+
+            elif any(k in enabled for k in custom_weights):
+                W = {k: v for k, v in custom_weights.items() if k in enabled}
+                W = self._normalize(W)
+            
+            else:
+                e = self._empty_count()
+                W = self._phase_weights(e, enabled)
+        
         else:
             e = self._empty_count()
             W = self._phase_weights(e, enabled)
+        
 
         return sum(W[name] * h_vals[name] for name in enabled)
 
