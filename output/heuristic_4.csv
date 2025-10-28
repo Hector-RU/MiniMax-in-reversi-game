@@ -1,0 +1,13 @@
+opponent,winner,points,Total_points,turns,total_nodes_expanded,total_search_depth,total_running_time,total_max_ram_usage
+weights_1,heuristic_4,52,64,30,41.93,1.10,1.03,0.55
+weights_2,weights_2,20,62,28,45.43,1.29,1.02,0.57
+heuristic_1,heuristic_4,50,53,28,36.32,1.50,1.02,0.49
+heuristic_2,heuristic_2,19,64,30,36.20,1.40,1.02,0.54
+heuristic_3,heuristic_3,28,60,26,33.27,1.38,1.02,0.47
+heuristic_5,heuristic_5,10,60,26,33.96,1.65,1.03,0.59
+greedy,heuristic_4,46,64,30,34.87,1.47,1.03,0.54
+random,heuristic_4,37,64,30,48.43,1.23,1.03,0.52
+minimax_base,minimax_base,17,64,30,29.53,1.37,1.02,0.52
+bad_player,heuristic_4,41,62,30,35.70,1.17,1.03,0.55
+time_3,time_3,30,64,30,39.67,1.40,1.02,0.50
+time_10,time_10,0,51,21,44.43,1.10,1.01,0.52
