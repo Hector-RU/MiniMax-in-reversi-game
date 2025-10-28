@@ -14,15 +14,13 @@ class GreedyPlayer(Player):
     
     TYPE_ = "greedy"
     
-    def __init__(self, name="greedy", depth=math.inf, max_time=math.inf, 
+    def __init__(self, name="greedy", 
                 enabled_heuristics: Optional[List[str]] = None,
                 custom_weights: Optional[dict] = None):
         
-        super().__init__(name)
-        self.max_depth = depth  
+        super().__init__(name) 
         self.enabled_heuristics = set(enabled_heuristics) if enabled_heuristics else None
         self.custom_weights = custom_weights
-        self.max_time = max_time
         self.ejecution_time = 0
         self.nodes_expanded = 0
         self.depth_explored = 0

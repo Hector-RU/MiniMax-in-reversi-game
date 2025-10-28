@@ -12,6 +12,7 @@ from players.randomPlayer import RandomPlayer
 from players.minimax import MinimaxPlayer
 from game.control import Control
 from game.tokens import StackToken
+from multiprocessing import Lock
 
 class ReversiGame:
 
@@ -141,6 +142,7 @@ class ReversiGame:
         for player, opponent in ((self.player1, self.player2),(self.player2, self.player1)):
             try:
                 Metrics.generate_report(player, opponent.name, winner, self.board.points()[player.token_color], self.board.points()["R"]+self.board.points()["B"])
+                player.reset()
             except:
                 pass
 
@@ -160,21 +162,18 @@ class ReversiGame:
             x, y = self.current_turn.play(self.board)
             self.board.insert_play(x, y, self.current_turn.tokens.pop())
             self.swap_turn()
+        
         winner = None
+        
         if self.board.points()["B"] > self.board.points()["R"]:
-            print("Ganador: Azul")
-            winner = self.player1.name  if self.player1.token_color == "B" else self.player2.name
+            winner = self.player1  if self.player1.token_color == "B" else self.player2
         elif self.board.points()["R"] > self.board.points()["B"]:
-            print("Ganador: Rojo")
             winner = self.player1 if self.player1.token_color == "R" else self.player2
-            
-        for player, opponent in ((self.player1, self.player2),(self.player2, self.player1)):
-            try:
-                Metrics.generate_vs_report(player, opponent.name, winner.name, self.board.points()[winner.token_color], self.board.points()["R"]+self.board.points()["B"], self.board.depth)
-            except:
-                pass
-            
-        return winner, self.board
+        winner_name = winner.name if winner else None
+        winner_points = self.board.points()[winner.token_color] if winner else None
+        
+        Metrics.generate_vs_report(self.player1.name, self.player2.name, winner_name, winner_points, self.board.points()["R"]+self.board.points()["B"], self.board.depth)
+        return winner_name, self.board.points()["R"]+self.board.points()["B"]
             
         
 

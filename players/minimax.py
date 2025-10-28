@@ -93,7 +93,6 @@ class MinimaxPlayer(Player):
         self.max_ram_usage += (peak_memory / 1024**2)
         
         tracemalloc.stop()
-        print(f"{self.name} elige {best_move} (Puntuación: {best_score:.4f})")
         return best_move
 
     def _minimax(self, board: ReversiBoard, depth: int, alpha: float, beta: float, is_maximizing_player: bool, depth_counter:int=0) -> float:

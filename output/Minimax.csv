@@ -1,5 +1,0 @@
-opponent,winner,points,Total_points,turns,total_nodes_expanded,total_search_depth,total_running_time,total_max_ram_usage
-Random,Minimax,45,64,30,3147,48,30.20,32.25
-Greedy,Minimax,41,64,30,3355,56,30.17,32.52
-Bad,Minimax,51,56,30,5250,73,30.13,29.36
-Minimax2,Minimax2,20,63,29,3431,70,29.15,34.88

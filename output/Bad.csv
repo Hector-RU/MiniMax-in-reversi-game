@@ -1,2 +1,0 @@
-opponent,winner,points,Total_points,turns,total_nodes_expanded,total_search_depth,total_running_time,total_max_ram_usage
-Minimax,Minimax,5,56,22,3939,54,22.12,20.77
